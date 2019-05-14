@@ -83,7 +83,9 @@ message GetBlockByHashReply {
   ensicoin_rpc.Block block = 1;
 }
 
-message GetTxByHashRequest {}
+message GetTxByHashRequest {
+  bytes hash = 1;
+}
 message GetTxByHashReply {
   ensicoin_rpc.Tx tx = 1;
 }
