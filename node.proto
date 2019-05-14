@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "types.proto";
-
 package ensicoin_rpc;
 
 message Outpoint {
