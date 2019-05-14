@@ -4,7 +4,7 @@ package ensicoin_rpc;
 
 message Outpoint {
   bytes hash = 1;
-  uint64 index = 2;
+  uint32 index = 2;
 }
 
 message TxInput {
