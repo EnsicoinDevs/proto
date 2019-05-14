@@ -73,21 +73,22 @@ message PublishRawBlockReply {}
 
 message GetBlockTemplateRequest {}
 message GetBlockTemplateReply {
-  ensicoin_rpc.BlockTemplate template = 1;
+  BlockTemplate template = 1;
+  repeated Tx txs = 2;  
 }
 
 message GetBlockByHashRequest {
   bytes hash = 1;
 }
 message GetBlockByHashReply {
-  ensicoin_rpc.Block block = 1;
+  Block block = 1;
 }
 
 message GetTxByHashRequest {
   bytes hash = 1;
 }
 message GetTxByHashReply {
-  ensicoin_rpc.Tx tx = 1;
+  Tx tx = 1;
 }
 
 service Node {
