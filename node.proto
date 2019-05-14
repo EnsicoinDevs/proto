@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "types.proto";
 
-package ensicoin_rpc.node;
+package ensicoin_rpc;
 
 enum Error {
     INVALID_DATA = 0;
