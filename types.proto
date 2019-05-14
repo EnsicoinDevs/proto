@@ -22,18 +22,19 @@ message Tx {
   repeated string flags = 2;
   repeated TxInput inputs = 3;
   repeated TxOutput outputs = 4;
-  string hash = 5;
+  bytes hash = 5;
 }
 
 message Block {
-  uint32 version = 1;
-  repeated string flags = 2;
-  bytes prev_block = 3;
-  bytes merkle_root = 4;
-  uint64 timestamp = 5;
-  uint32 height = 6;
-  bytes target = 7;
-  repeated Tx txs = 8;
+  bytes hash = 1;
+  uint32 version = 2;
+  repeated string flags = 3;
+  bytes prev_block = 4;
+  bytes merkle_root = 5;
+  uint64 timestamp = 6;
+  uint32 height = 7;
+  bytes target = 8;
+  repeated Tx txs = 9;
 }
 
 message BlockTemplate {
