@@ -73,7 +73,7 @@ message PublishRawBlockReply {}
 
 message GetBlockTemplateRequest {}
 message GetBlockTemplateReply {
-  BlockTemplate template = 1;
+  BlockTemplate block_template = 1;
   repeated Tx txs = 2;  
 }
 
