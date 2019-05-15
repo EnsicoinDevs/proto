@@ -2,13 +2,8 @@ syntax = "proto3";
 
 package ensicoin_rpc;
 
-message Address {
-  string ip = 1;
-  uint32 port = 2;
-}
-
 message Peer {
-  Address address = 1;
+  string address = 1;
 }
 
 message Outpoint {
