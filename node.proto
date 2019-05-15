@@ -2,6 +2,14 @@ syntax = "proto3";
 
 package ensicoin_rpc;
 
+message Address{
+  string ip = 1;
+  uint32 port = 2;
+}
+message Peer{
+  Address address = 1;
+}
+
 message Outpoint {
   bytes hash = 1;
   uint32 index = 2;
@@ -91,6 +99,17 @@ message GetTxByHashReply {
   Tx tx = 1;
 }
 
+message ConnectPeerRequest {
+  Peer peer = 1;
+}
+message ConnectPeerReply {
+}
+message DisconnectPeerRequest{
+  Peer peer = 1;
+}
+message DisconnectPeerReply{
+}
+
 service Node {
   rpc GetInfo(GetInfoRequest) returns (GetInfoReply) {}
   rpc PublishRawTx(stream PublishRawTxRequest) returns (PublishRawTxReply) {}
@@ -98,4 +117,6 @@ service Node {
   rpc GetBlockTemplate(GetBlockTemplateRequest) returns (stream GetBlockTemplateReply) {}
   rpc GetBlockByHash(GetBlockByHashRequest) returns (GetBlockByHashReply) {}
   rpc GetTxByHash(GetTxByHashRequest) returns (GetTxByHashReply) {}
+  rpc ConnectPeer(ConnectPeerRequest) returns (ConnectPeerReply) {}
+  rpc DisconnectPeer(DisconnectPeerRequest) returns (DisconnectPeerReply) {}
 }
