@@ -2,11 +2,12 @@ syntax = "proto3";
 
 package ensicoin_rpc;
 
-message Address{
+message Address {
   string ip = 1;
   uint32 port = 2;
 }
-message Peer{
+
+message Peer {
   Address address = 1;
 }
 
@@ -104,10 +105,11 @@ message ConnectPeerRequest {
 }
 message ConnectPeerReply {
 }
-message DisconnectPeerRequest{
+
+message DisconnectPeerRequest {
   Peer peer = 1;
 }
-message DisconnectPeerReply{
+message DisconnectPeerReply {
 }
 
 service Node {
