@@ -114,8 +114,8 @@ message DisconnectPeerReply {
 
 service Node {
   rpc GetInfo(GetInfoRequest) returns (GetInfoReply) {}
-  rpc PublishRawTx(stream PublishRawTxRequest) returns (PublishRawTxReply) {}
-  rpc PublishRawBlock(stream PublishRawBlockRequest) returns (PublishRawBlockReply) {}
+  rpc PublishRawTx(PublishRawTxRequest) returns (PublishRawTxReply) {}
+  rpc PublishRawBlock(PublishRawBlockRequest) returns (PublishRawBlockReply) {}
   rpc GetBlockTemplate(GetBlockTemplateRequest) returns (stream GetBlockTemplateReply) {}
   rpc GetBlockByHash(GetBlockByHashRequest) returns (GetBlockByHashReply) {}
   rpc GetTxByHash(GetTxByHashRequest) returns (GetTxByHashReply) {}
