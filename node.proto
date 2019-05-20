@@ -112,6 +112,12 @@ message DisconnectPeerRequest {
 message DisconnectPeerReply {
 }
 
+message GetBestBlocksRequest {
+}
+message GetBestBlocksReply {
+  bytes hash = 1;
+}
+
 service Node {
   rpc GetInfo(GetInfoRequest) returns (GetInfoReply) {}
   rpc PublishRawTx(PublishRawTxRequest) returns (PublishRawTxReply) {}
@@ -121,4 +127,5 @@ service Node {
   rpc GetTxByHash(GetTxByHashRequest) returns (GetTxByHashReply) {}
   rpc ConnectPeer(ConnectPeerRequest) returns (ConnectPeerReply) {}
   rpc DisconnectPeer(DisconnectPeerRequest) returns (DisconnectPeerReply) {}
+  rpc GetBestBlocks(GetBestBlocksRequest) returns (GetBestBlocksReply) {}
 }
