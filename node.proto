@@ -127,5 +127,5 @@ service Node {
   rpc GetTxByHash(GetTxByHashRequest) returns (GetTxByHashReply) {}
   rpc ConnectPeer(ConnectPeerRequest) returns (ConnectPeerReply) {}
   rpc DisconnectPeer(DisconnectPeerRequest) returns (DisconnectPeerReply) {}
-  rpc GetBestBlocks(GetBestBlocksRequest) returns (GetBestBlocksReply) {}
+  rpc GetBestBlocks(GetBestBlocksRequest) returns (stream GetBestBlocksReply) {}
 }
