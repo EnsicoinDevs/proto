@@ -55,9 +55,7 @@ message BlockTemplate {
   bytes target = 6;
 }
 
-enum Error {
-    INVALID_DATA = 0;
-}
+enum Error { INVALID_DATA = 0; }
 
 message Reply {
   Error error = 1;
@@ -84,7 +82,7 @@ message PublishRawBlockReply {}
 message GetBlockTemplateRequest {}
 message GetBlockTemplateReply {
   BlockTemplate block_template = 1;
-  repeated Tx txs = 2;  
+  repeated Tx txs = 2;
 }
 
 message GetBlockByHashRequest {
@@ -104,29 +102,33 @@ message GetTxByHashReply {
 message ConnectPeerRequest {
   Peer peer = 1;
 }
-message ConnectPeerReply {
-}
+message ConnectPeerReply {}
 
 message DisconnectPeerRequest {
   Peer peer = 1;
 }
-message DisconnectPeerReply {
-}
+message DisconnectPeerReply {}
 
-message GetBestBlocksRequest {
-}
+message GetBestBlocksRequest {}
 message GetBestBlocksReply {
   bytes hash = 1;
+}
+
+message GetNewTxRequest {}
+message GetNewTxReply {
+  Tx tx = 1;
 }
 
 service Node {
   rpc GetInfo(GetInfoRequest) returns (GetInfoReply) {}
   rpc PublishRawTx(PublishRawTxRequest) returns (PublishRawTxReply) {}
   rpc PublishRawBlock(PublishRawBlockRequest) returns (PublishRawBlockReply) {}
-  rpc GetBlockTemplate(GetBlockTemplateRequest) returns (stream GetBlockTemplateReply) {}
+  rpc GetBlockTemplate(GetBlockTemplateRequest)
+      returns (stream GetBlockTemplateReply) {}
   rpc GetBlockByHash(GetBlockByHashRequest) returns (GetBlockByHashReply) {}
   rpc GetTxByHash(GetTxByHashRequest) returns (GetTxByHashReply) {}
   rpc ConnectPeer(ConnectPeerRequest) returns (ConnectPeerReply) {}
   rpc DisconnectPeer(DisconnectPeerRequest) returns (DisconnectPeerReply) {}
   rpc GetBestBlocks(GetBestBlocksRequest) returns (stream GetBestBlocksReply) {}
+  rpc GetNewTx(GetNewTxRequest) returns (stream GetNewTxReply) {}
 }
