@@ -119,6 +119,16 @@ message GetNewTxReply {
   Tx tx = 1;
 }
 
+message GetKnownAddressRequest {}
+message GetKnownAddressReply {
+  repeated AddressSeen addresses = 1;
+}
+
+message AddressSeen {
+  Address address = 1;
+  uint64 last_seen = 2;
+}
+
 service Node {
   rpc GetInfo(GetInfoRequest) returns (GetInfoReply) {}
   rpc PublishRawTx(PublishRawTxRequest) returns (PublishRawTxReply) {}
@@ -131,4 +141,5 @@ service Node {
   rpc DisconnectPeer(DisconnectPeerRequest) returns (DisconnectPeerReply) {}
   rpc GetBestBlocks(GetBestBlocksRequest) returns (stream GetBestBlocksReply) {}
   rpc GetNewTx(GetNewTxRequest) returns (stream GetNewTxReply) {}
+  rpc GetKnownAddress(GetKnownAddressRequest) returns (GetKnownAddressReply) {}
 }
