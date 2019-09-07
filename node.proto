@@ -43,6 +43,7 @@ message Block {
   uint64 timestamp = 6;
   uint32 height = 7;
   bytes target = 8;
+  uint64 nonce = 10;
   repeated Tx txs = 9;
 }
 
