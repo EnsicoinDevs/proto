@@ -119,6 +119,20 @@ message GetNewTxReply {
   Tx tx = 1;
 }
 
+message GetBlockAfterRequest {
+  bytes hash = 1;
+};
+message GetBlockAfterResponse {
+  bytes next_block_hash = 1;
+}
+
+message GetBlockByHeightRequest {
+  uint32 height = 1;
+}
+message GetBlockByHeightResponse {
+  bytes hash = 1;
+}
+
 service Node {
   rpc GetInfo(GetInfoRequest) returns (GetInfoReply) {}
   rpc PublishRawTx(PublishRawTxRequest) returns (PublishRawTxReply) {}
@@ -131,4 +145,8 @@ service Node {
   rpc DisconnectPeer(DisconnectPeerRequest) returns (DisconnectPeerReply) {}
   rpc GetBestBlocks(GetBestBlocksRequest) returns (stream GetBestBlocksReply) {}
   rpc GetNewTx(GetNewTxRequest) returns (stream GetNewTxReply) {}
+
+  rpc GetBlockAfter(GetBlockAfterRequest) returns (GetBlockAfterResponse) {}
+  rpc GetBlockByHeight(GetBlockByHeightRequest)
+      returns (GetBlockByHeightResponse) {}
 }
