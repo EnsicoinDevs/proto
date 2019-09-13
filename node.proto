@@ -34,7 +34,7 @@ message Tx {
   bytes hash = 5;
 }
 
-message Block {
+message BlockHeader {
   bytes hash = 1;
   uint32 version = 2;
   repeated string flags = 3;
@@ -44,6 +44,9 @@ message Block {
   uint32 height = 7;
   bytes target = 8;
   uint64 nonce = 10;
+}
+message Block {
+  BlockHeader header = 11;
   repeated Tx txs = 9;
 }
 
@@ -91,6 +94,7 @@ message GetBlockByHashRequest {
 }
 message GetBlockByHashReply {
   Block block = 1;
+  bool main_chain = 2;
 }
 
 message GetTxByHashRequest {
@@ -120,6 +124,14 @@ message GetNewTxReply {
   Tx tx = 1;
 }
 
+message GetBlockHeaderByHashRequest{
+  bytes hash = 1;
+}
+message GetBlockHeaderByHashReply {
+  BlockHeader header = 1;
+  bool main_chain = 2;
+}
+
 service Node {
   rpc GetInfo(GetInfoRequest) returns (GetInfoReply) {}
   rpc PublishRawTx(PublishRawTxRequest) returns (PublishRawTxReply) {}
@@ -127,6 +139,7 @@ service Node {
   rpc GetBlockTemplate(GetBlockTemplateRequest)
       returns (stream GetBlockTemplateReply) {}
   rpc GetBlockByHash(GetBlockByHashRequest) returns (GetBlockByHashReply) {}
+  rpc GetBlockHeaderByHash(GetBlockHeaderByHashRequest) returns (GetBlockHeaderByHashReply) {}
   rpc GetTxByHash(GetTxByHashRequest) returns (GetTxByHashReply) {}
   rpc ConnectPeer(ConnectPeerRequest) returns (ConnectPeerReply) {}
   rpc DisconnectPeer(DisconnectPeerRequest) returns (DisconnectPeerReply) {}
